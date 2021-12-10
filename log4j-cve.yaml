@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: log4j
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: log4j
+ template:
+   metadata:
+     name: log4j
+     labels:
+       app: log4j
+   spec:
+     containers:
+     - name: log4j
+       image: ghcr.io/christophetd/log4shell-vulnerable-app
+       ports:
+       - containerPort: 80
